@@ -1,0 +1,109 @@
+/* Navbar.css */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    width: 100%;
+    background: transparent;
+    box-shadow: 0 0.6vh 2vw rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar img {
+    height: 3vh;
+    width: auto;
+  }
+  
+  .navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 3vw;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar-menu li {
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 2.2vh;
+    color: #333;
+    transition: color 0.3s, font-weight 0.3s;
+    position: relative;
+  }
+  
+  .navbar-menu li:hover,
+  .navbar-menu .active {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .navbar-menu .active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #007bff;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+  }
+  
+  .navbar-right img {
+    height: 2.5vh;
+    cursor: pointer;
+    position: relative;
+    top: 2px;
+  }
+  
+  .navbar-search-icon {
+    position: relative;
+  }
+  
+  .navbutton {
+    position: relative;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: black;
+    border: 2px solid #d3d3d3;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 2vh;
+    font-family: 'Arial', sans-serif;
+    transition: color 0.3s, background-color 0.3s, border-color 0.3s;
+    overflow: hidden;
+  }
+  
+  .navbutton::before {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background-color: #000;
+    z-index: 0;
+    transition: transform 0.5s, border-color 0.3s;
+    transform: translate(-50%, 100%) scale(0);
+    border-radius: 50%;
+  }
+  
+  .navbutton:hover::before {
+    transform: translate(-50%, 0) scale(1);
+  }
+  
+  .navbutton:hover {
+    color: #fff;
+    border-color: black;
+  }
+  
+  .navbutton:hover span {
+    position: relative;
+    z-index: 1;
+  }
+  
