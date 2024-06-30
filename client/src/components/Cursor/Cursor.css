@@ -1,0 +1,14 @@
+.cursor  {
+    width: 1.5vw;
+    height: 1.5vw;
+ 
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 50;
+    transform: translate(-50%, -50%);
+  }
+  .cursor img{ width: 2.2vw;
+    height: 2.2vw;}
+  
+  

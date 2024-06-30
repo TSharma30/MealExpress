@@ -7,12 +7,14 @@ import Cart from './pages/Cart/Cart';
 import './App.css'; // Adjusted path if necessary
 import Footer from './components/Footer/Footer';
 import LoginPopup from "./components/LoginPopup/LoginPopup"
+import Cursor from './components/Cursor/Cursor';
 
 function App() {
   const [showLogin,setShowLogin] = useState(false);
 
   return (
     <>
+    <Cursor/>
     {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
     <div className="app">
       <Navbar setShowLogin={setShowLogin}/>
