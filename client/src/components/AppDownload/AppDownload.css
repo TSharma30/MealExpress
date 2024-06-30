@@ -27,7 +27,7 @@ margin-bottom: 1vw; /* Increased margin for spacing */
     width: 10vw; 
     height: 3vw;/* Slightly larger buttons */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added shadow transition */
-    cursor: pointer; /* Pointer cursor on hover */
+    
     border-radius: 10px; /* Rounded corners for images */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Subtle shadow */
 }
