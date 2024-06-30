@@ -1,0 +1,78 @@
+/* FoodItem.css */
+
+.food-item {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    overflow: hidden;  
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  .food-item-price
+  {
+    color: tomato;
+  }
+  
+.food-item-name
+  {
+    font-size: 10vw;
+  }
+  .food-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .food-item-img-container {
+    position: relative;
+    width: 100%;
+    padding-top: 75%; /* Adjust as needed for image aspect ratio */
+    overflow: hidden;
+    background-color: #f0f0f0;
+  }
+  
+  .food-item-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Styling for add button */
+  .add {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 10; /* Ensure it's above the image */
+    cursor: pointer;
+    height: 2vw;
+    width:2vw;
+    /* Add any additional styles as needed */
+  }
+  .remove-button, .add-button
+  {
+    height: 1.8vw;
+    width:1.8vw;
+  }
+  
+  /* Styling for counter */
+  .food-item-counter {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 10; /* Ensure it's above the image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    height: 2.2vw;
+    width:5.9vw;
+    padding: 0vw 0.5vw;
+    background-color: white;
+    border-radius: 15px;;
+    gap: 8px; /* Adjust spacing between elements */
+  }
+
+  

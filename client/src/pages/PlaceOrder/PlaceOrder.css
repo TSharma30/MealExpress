@@ -1,0 +1,144 @@
+.place-order {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.place-order-left {
+    width: 60%;
+    padding: 5px;
+    margin-left: 2vw;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.place-order-left .title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff5e6;
+    /* Lightest shade of orange */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.multi-fields {
+    display: flex;
+    flex-wrap: wrap;
+
+
+}
+
+.multi-fields input {
+    flex: 1 1 calc(50% - 10px);
+    /* Adjust width here */
+    padding: 10px;
+    margin-right: 10px;
+    background-color: #00000010;
+    height: 2.5vw;
+    border-radius: 5px;
+    border: #ccc solid;
+    border: none;
+
+
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    /* Bottom shadow */
+}
+
+input[type="email"],
+input[type="text"] {
+    width: calc(100% - 10px);
+    padding: 10px;
+    margin-bottom: 1.5vw;
+    border: none;
+    border: #cccccc4e solid;
+    border-radius: 5px;
+    background-color: #f3f3f35a;
+    height: 2.5vw;
+
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    /* Bottom shadow */
+}
+
+input[type="text"]:last-child {
+    margin-bottom: 20px;
+}
+
+/* Adjust specific widths for individual fields */
+input[type="text"][placeholder="First name"],
+input[type="text"][placeholder="Last name"],
+input[type="text"][placeholder="City"],
+input[type="text"][placeholder="State"],
+input[type="text"][placeholder="Zip-Code"],
+input[type="text"][placeholder="Country"] {
+    width: calc(50% - 10px);
+    /* Adjust width as needed */
+}
+
+.cart-total {
+    padding: 1vw;
+}
+
+.cart-total h2 {
+    margin-bottom: 1vw;
+}
+
+.cart-total-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1vw;
+}
+
+.cart-total-details p,
+.cart-total-details b {
+    margin: 0;
+}
+
+.cart-total button {
+    background-color: tomato;
+    color: #fff;
+    border: none;
+    padding: 1vw 2vw;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cart-total button:hover {
+    background-color: #c82333;
+}
+
+.cart-promocode {
+    margin-top: 2vw;
+}
+
+.cart-promocode p {
+    margin-bottom: 1vw;
+}
+
+.cart-promocode-input {
+    display: flex;
+    align-items: center;
+}
+
+.cart-promocode-input input {
+    flex: 1;
+    padding: 0.5vw;
+    border: 0px solid #ccc;
+    box-shadow: 0px 3px 5px rgb(254, 182, 109);
+    border-radius: 20px;
+    margin-right: 10px;
+    /* Gap between input field and button */
+}
+
+.cart-promocode-input button {
+    background-color: tomato;
+    color: #fff;
+    border: none;
+    padding: 0.5vw 1vw;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cart-promocode-input button:hover {
+    background-color: #c82333;
+}

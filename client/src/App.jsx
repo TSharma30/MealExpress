@@ -1,30 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Navbar from './components/navbar/Navbar'
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import Home from "./pages/Home/Home.jsx"
-import PlaceOrder from "./pages/PlaceOrder/PlaceOrder.jsx"
-import Cart from "./pages/Cart/Cart.jsx"
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/navbar/Navbar';
+import Home from './pages/Home/Home';
+import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
+import Cart from './pages/Cart/Cart';
+import './App.css'; // Adjusted path if necessary
+import Footer from './components/Footer/Footer';
+import LoginPopup from "./components/LoginPopup/LoginPopup"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [showLogin,setShowLogin] = useState(false);
 
   return (
     <>
+    {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
     <div className="app">
-      <Navbar/>
-      <BrowserRouter>
+      <Navbar setShowLogin={setShowLogin}/>
+    
         <Routes>
-          <Route path="/" element={<Home/>}></Route>
-          <Route path="/order" element={<PlaceOrder/>}></Route>
-          <Route path="/cart" element={<Cart/>}></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/order" element={<PlaceOrder />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
-      </BrowserRouter>
+        <Footer/>
+      
     </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

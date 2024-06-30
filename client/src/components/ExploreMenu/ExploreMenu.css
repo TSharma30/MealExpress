@@ -1,48 +1,66 @@
 .explore-menu {
-    text-align: center;
-    padding: 5vh 5vw;
-  }
+  text-align: center;
+  padding: 5vh 5vw;
+}
+
+.explore-menu h1 {
+  font-size: 4vh;
+  margin-bottom: 2vh;
+  font-family: 'Arial', sans-serif;
+}
+
+.explore-menu-text {
+  font-size: 2.5vh;
+  margin-bottom: 3vh;
+  font-family: 'Arial', sans-serif;
+  color: #333; /* Dark shade of gray */
+}
+
+.explore-menu-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1vw; /* Adjust the gap between items */
+}
+
+.explore-menu-list-item {
+  width: 10vw; /* Adjust item width */
+  padding: 1vw;
+  border-radius: 50%; /* Makes the item circular */
+  overflow: hidden; /* Ensures content doesn't overflow outside the circular border */
+  position: relative; /* Ensures position context for pseudo-element */
+}
+
+.explore-menu-list-item img {
+  width: 7vw;
+  height: 7vw;
+  border-radius: 50%;
+  margin-bottom: 1vh;
+  transition: border-color 0.3s ease; /* Smooth transition for border color change */
+}
+
+.explore-menu-list-item p {
+  font-size: 2.5vh; /* Adjusted text size */
+  font-family: 'Arial', sans-serif;
+  color: #333; /* Dark shade of gray */
+}
+
+.explore-menu hr 
+{
+  margin: 10px 0px;
+  height: 2px;
+  background-color: #e2e2e2;
   
-  .explore-menu h1 {
-    font-size: 4vh;
-    margin-bottom: 2vh;
-    font-family: 'Arial', sans-serif;
-  }
+  border: none;
+
+}
+
+.explore-menu-list-item .active
+{
+  border: 1vh solid transparent;
+  box-shadow: 0 0 0 4px rgba(255, 165, 0, 0.7);
+  transition: border ease-in-out;
   
-  .explore-menu-text {
-    font-size: 2.5vh;
-    margin-bottom: 3vh;
-    font-family: 'Arial', sans-serif;
-    color: #333; /* Dark shade of gray */
-  }
-  
-  .explore-menu-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-   
-    gap: 1vw; /* Adjust the gap between items */
-  }
-  
-  .explore-menu-list-item {
-    width: 10vw; /* Adjust item width */
-    
-    padding: 1vw;
-    border-radius: 1vh;
  
-    text-align: center;
-  }
-  
-  .explore-menu-list-item img {
-    width:7vw;
-    height: 7vw;
-    border-radius: 1vh;
-    margin-bottom: 1vh;
-  }
-  
-  .explore-menu-list-item p {
-    font-size: 2.5vh; /* Adjusted text size */
-    font-family: 'Arial', sans-serif;
-    color: #333; /* Dark shade of gray */
-  }
-  
+}
+

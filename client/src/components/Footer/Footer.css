@@ -1,0 +1,88 @@
+.footer {
+    background-color: #34393e; /* Dark background */
+    color: #ecf0f1; /* Light text color */
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start; /* Align items to the left */
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 20%;
+}
+
+.footer-content-left,
+.footer-content-center,
+.footer-content-right {
+    flex: 1;
+    margin: 10px;
+    text-align: left; /* Align text to the left */
+}
+
+.footer-content-left img,
+.footer-social-icons img {
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+
+.footer-content-left p {
+    margin: 10px 0;
+    width: 20vw;
+}
+
+.footer-social-icons {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.footer-social-icons img {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    transition: transform 0.3s ease;
+}
+
+.footer-social-icons img:hover {
+    transform: scale(1.2);
+}
+
+.footer-content-center h2,
+.footer-content-right h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.footer-content-center ul,
+.footer-content-right ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-content-center ul li,
+.footer-content-right ul li {
+    margin: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.footer-content-center ul li:hover,
+.footer-content-right ul li:hover {
+    color: #3498db; /* Light blue color on hover */
+    cursor: pointer;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #7f8c8d;
+    margin: 20px 0;
+}
+
+.footer-copyright {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #95a5a6;
+    text-align: center; /* Align text to the left */
+}

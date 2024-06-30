@@ -1,0 +1,38 @@
+.app-download {
+
+    padding: 5px 20px; /* Increased padding for better spacing */
+    text-align: center;
+    height: 8vw;
+    
+    max-width: 100%; /* Limit the maximum width */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+   
+    color: black; /* White text for contrast */
+}
+
+.app-download p {
+    font-size: 20px; /* Slightly larger font */
+    font-weight: 600; /* Bolder text */
+margin-bottom: 1vw; /* Increased margin for spacing */
+    line-height: 1.5; /* Better line spacing */
+}
+
+.app-download-platforms {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increased gap between buttons */
+}
+
+.app-download-platforms img {
+    width: 10vw; 
+    height: 3vw;/* Slightly larger buttons */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added shadow transition */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 10px; /* Rounded corners for images */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+}
+
+.app-download-platforms img:hover {
+    transform: scale(1.1); /* Enlarge on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* More pronounced shadow on hover */
+}
