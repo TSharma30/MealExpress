@@ -1,0 +1,42 @@
+.list.add {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .list-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .list-table-format {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .list-table-format.title {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .list-table-format img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+  }
+  
+  .list-table-format p {
+    margin: 0;
+    padding: 5px;
+  }
+  
+  .list-table-format p:last-child {
+    cursor: pointer;
+    color: red;
+  }
+  

@@ -14,7 +14,7 @@ const FoodDisplay = ({ category }) => {
                     (category === "All" || category === item.category) && (
                         <FoodItem 
                             key={index} 
-                            id={item._id} 
+                            id={item.id} 
                             name={item.name} 
                             description={item.description} 
                             price={item.price} 

@@ -1,0 +1,46 @@
+.sidebar {
+  width: 250px;
+  height: 100vh; /* Full height sidebar */
+  background-color: #ffffff; /* White background */
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+}
+
+.sidebar-options {
+  margin-top: 20px;
+}
+
+.sidebar-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 20px; /* More rounded corners */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for background and transform */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Subtle shadow for each option */
+  background-color: #fdb14e; /* Light orange background color */
+  text-decoration: none;
+}
+
+.sidebar-option img {
+  width: 1.2vw; /* Smaller icon size */
+  margin-right: 10px;
+}
+
+.sidebar-option p {
+  font-size: 14px; /* Smaller font size */
+  font-weight: 500;
+  color: #ffffff; /* White text color */
+}
+
+/* Active state */
+.sidebar-option.active {
+  background-color: tomato; /* Tomato color for active state */
+}
+
+/* Hover effect */
+.sidebar-option:hover {
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}

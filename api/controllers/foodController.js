@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import fs from "fs"
 
 const prisma = new PrismaClient();
 
@@ -31,4 +32,51 @@ const addFood = async (req, res) => {
     }
 };
 
-export default addFood;
+const listFood = async (req, res) => {
+    try {
+        const foods = await prisma.food.findMany();
+        res.status(200).json({ success: true, data: foods });
+    } catch (error) {
+        console.error("Error listing foods:", error);
+        res.status(500).json({ success: false, message: "Failed to fetch foods" });
+    }
+};
+
+const removeFood = async (req, res) => {
+    const { id } = req.body;
+
+    if (!id) {
+        return res.status(400).json({ success: false, message: "Invalid food id" });
+    }
+
+    try {
+        const item = await prisma.food.findUnique({
+            where: {
+                id: parseInt(id, 10) // Ensure id is parsed to an integer
+            }
+        });
+
+        if (item) {
+            fs.unlink(`uploads/${item.image}`, (err) => {
+                if (err) {
+                    console.error("Error deleting image file:", err);
+                }
+            });
+
+            await prisma.food.delete({
+                where: {
+                    id: item.id
+                }
+            });
+
+            res.status(200).json({ success: true, message: "Food deleted" });
+        } else {
+            res.status(404).json({ success: false, message: "Food not found" });
+        }
+    } catch (error) {
+        console.error("Error removing food:", error);
+        res.status(500).json({ success: false, message: "Error removing food" });
+    }
+};
+
+export { addFood, listFood, removeFood };

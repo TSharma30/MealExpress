@@ -1,0 +1,121 @@
+.add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    background-color: #fff5e6; /* Light background color */
+}
+
+.add form {
+    background-color: #ffffff; /* White form background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    width: 100%;
+    max-width: 600px; /* Slightly wider form */
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to flex-start */
+    margin-bottom: 20px; /* Increase spacing */
+}
+
+.add-img-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to flex-start */
+    margin-bottom: 20px; /* More spacing */
+}
+
+.add-img-upload p {
+    margin-bottom: 10px; /* Space between text and upload area */
+}
+
+
+
+.add-img-upload label {
+   
+    cursor: pointer;
+    display: inline-block;
+    padding: 0px 0px;
+    border-radius: 5px;
+    color: #d88f8f;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+
+
+.add-img-upload input[type="file"] {
+    display: none;
+    /* Hide the default file input */
+}
+
+.add-img-upload img {
+    width: 100px; /* Adjust image size */
+    height: 100px; /* Adjust image size */
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 10px; /* Space between button and preview */
+}
+
+.add-product-name input,
+.add-product-description textarea,
+.add-category select,
+.add-price input {
+    padding: 0.5vw;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 1vw; /* Slightly larger font */
+    width: 40vw;
+}
+
+.add-product-description textarea {
+    resize: none;
+}
+
+.add-category-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 20px; /* Add margin at the top */
+}
+
+.add-category,
+.add-price {
+    flex: 1;
+}
+
+.add-category {
+    margin-right: 10px;
+}
+
+.add-price {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffa500; /* Light orange background */
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Space above button */
+    width: 100%;
+    text-align: center;
+}
+
+.add-btn:hover {
+    background-color: tomato; /* Tomato color on hover */
+}

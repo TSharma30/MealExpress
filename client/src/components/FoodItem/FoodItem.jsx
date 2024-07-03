@@ -4,14 +4,22 @@ import { assets } from '../../assets/assets';
 import { StoreContext } from '../../context/StoreContext';
 
 const FoodItem = ({ id, name, price, description, image }) => {
-  const { addToCart, removeFromCart, cartItems } = useContext(StoreContext);
+  const { addToCart, removeFromCart, cartItems, url  } = useContext(StoreContext);
 
   const handleAddToCart = () => {
-    addToCart(id);
+    if (id) {
+      addToCart(id);
+    } else {
+      console.error("Cannot add to cart: ID is undefined or null.");
+    }
   };
 
   const handleRemoveFromCart = () => {
-    removeFromCart(id);
+    if (id) {
+      removeFromCart(id);
+    } else {
+      console.error("Cannot remove from cart: ID is undefined or null.");
+    }
   };
 
   const counterWidth = cartItems[id] && cartItems[id] < 10 ? '5.8vw' : '6.1vw';
@@ -19,18 +27,18 @@ const FoodItem = ({ id, name, price, description, image }) => {
   return (
     <div className='food-item'>
       <div className="food-item-img-container">
-        <img className="food-item-image" src={image} alt={name} />
+        <img className="food-item-image" src={url + "/images/" + image} alt={name} />
 
         {/* Buttons for add and counter */}
         {
-          cartItems[id] === undefined || cartItems[id] === 0 ? 
-           ( <img
+          cartItems[id] === undefined || cartItems[id] === 0 ?
+            (<img
               className='add'
               onClick={handleAddToCart}
               src={assets.add_icon_white}
               alt="Add"
             />)
-           : 
+            :
             (<div className='food-item-counter' style={{ width: counterWidth }}>
               <img
                 className='remove-button'
