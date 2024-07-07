@@ -1,29 +1,24 @@
-import express from "express"
-import cors from "cors"
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import express from "express";
+import cors from "cors";
+import bodyParser from 'body-parser';
 import foodRouter from "./routes/foodRoute.js";
+import userRouter from "./routes/userRoute.js";
 
-// async function insertUser(name, email,password) {
-//     const res = await prisma.user.create({
-//       data: {
-//           name,
-//           email,
-//           password
-//       }
-//     })
-//     console.log(res);
-//   }
-  
-//   insertUser("harkirat", "harkirat@gmail.com", "admin@1")
+const app = express();
+const port = 8080;
 
-const app = express()
-const port = 8080
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
 
-app.use(express.json())
-app.use(cors())
 app.get("/", (req, res) => {
-    res.send("Api working")
-})
-app.use("/api/food",foodRouter)
-app.listen(port, () => { console.log(`server started at https://localhost:${port}`) })
+    res.send("Api working");
+});
+
+app.use("/api/food", foodRouter);
+app.use("/images", express.static('uploads'));
+app.use("/api/user", userRouter);
+
+app.listen(port, () => {
+    console.log(`Server started at http://localhost:${port}`);
+});

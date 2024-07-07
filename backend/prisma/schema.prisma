@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id       Int     @id @default(autoincrement())
+  username String  @unique
+  password String
+  email    String  @unique
+}
+
+
+model User {
+  id        Int    @id @default(autoincrement())
+  name      String
+  email     String @unique
+  password  String
+  cartData  Json?  // Optional field for storing cart data as JSON
+}
+
+
+model Food {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String
+  price       Int
+  category    String
+  image       String
+}
+
+model Order {
+  id        String   @id @default(uuid())
+  userId    Int
+  items     Json
+  amount    Float
+  address   Json
+  status    String   @default("food processing")
+  date      DateTime @default(now())
+
+
+
+}
