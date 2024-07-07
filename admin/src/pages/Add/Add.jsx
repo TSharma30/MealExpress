@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Add.css';
+import { useAdminAuth } from '../../context/AdminContext';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Import CSS for toastify
 
-const Add = ({url}) => {
-   
+const Add = () => {
+    const { url } = useAdminAuth(); // Accessing URL from the context
     const [image, setImage] = useState(false);
     const [data, setData] = useState({
         name: "",
@@ -30,7 +33,7 @@ const Add = ({url}) => {
         try {
             const response = await axios.post(`${url}/api/food/add`, formData);
             if (response.data.success) {
-                console.log("success");
+                toast.success("Item added successfully!");
                 setData({
                     name: "",
                     description: "",
@@ -39,10 +42,10 @@ const Add = ({url}) => {
                 });
                 setImage(false);
             } else {
-                console.log(response.data.error);
+                toast.error(response.data.error);
             }
         } catch (error) {
-            console.log("Error:", error);
+            toast.error("An error occurred while adding the item");
         }
     };
 
@@ -93,20 +96,21 @@ const Add = ({url}) => {
                         value={data.category}
                         onChange={onChangeHandler}
                     >
-                        <option value="salad">Salad</option>
-                        <option value="noodles">Noodles</option>
-                        <option value="role">Role</option>
-                        <option value="desert">Desert</option>
-                        <option value="sandwich">Sandwich</option>
-                        <option value="pure-veg">Pure Veg</option>
-                        <option value="pasta">Pasta</option>
-                        <option value="cake">Cake</option>
+                        <option value="Salad">Salad</option>
+                        <option value="Noodles">Noodles</option>
+                        <option value="Rolls">Rolls</option>
+                        <option value="Deserts">Desert</option>
+                        <option value="Sandwich">Sandwich</option>
+                        <option value="Pure veg">Pure Veg</option>
+                        <option value="Pasta">Pasta</option>
+                        <option value="Cake">Cake</option>
                     </select>
                 </div>
                 <div className="add-price flex-col">
                     <button type="submit" className="add-btn">ADD</button>
                 </div>
             </form>
+            <ToastContainer /> {/* Add ToastContainer for toast notifications */}
         </div>
     );
 };

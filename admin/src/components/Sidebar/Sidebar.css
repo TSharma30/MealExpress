@@ -1,10 +1,16 @@
 .sidebar {
-  width: 250px;
-  height: 100vh; /* Full height sidebar */
-  background-color: #ffffff; /* White background */
-  padding: 20px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+  width: 30vw;
+  max-height: 100vh;
+  /* Full height sidebar */
+  background-color: #272727;
+  /* White background */
+  padding: 2.5vw;
+  border-radius: 2vw 0vw 0vw 2vw;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  /* Soft shadow effect */
 }
+
+
 
 .sidebar-options {
   margin-top: 20px;
@@ -14,33 +20,49 @@
   display: flex;
   align-items: center;
   margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 20px; /* More rounded corners */
+
+  padding: 0.5vw;
+  border-radius: 20px;
+  /* More rounded corners */
   cursor: pointer;
-  transition: all 0.3s ease; /* Smooth transition for background and transform */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Subtle shadow for each option */
-  background-color: #fdb14e; /* Light orange background color */
+  transition: all 0.3s ease;
   text-decoration: none;
 }
 
-.sidebar-option img {
-  width: 1.2vw; /* Smaller icon size */
-  margin-right: 10px;
-}
 
-.sidebar-option p {
-  font-size: 14px; /* Smaller font size */
-  font-weight: 500;
-  color: #ffffff; /* White text color */
-}
+
 
 /* Active state */
 .sidebar-option.active {
-  background-color: tomato; /* Tomato color for active state */
+  color: #ec9829;
+  /* Tomato color for active state */
 }
 
 /* Hover effect */
 .sidebar-option:hover {
-  transform: translateY(-2px); /* Slight lift on hover */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  transform: translateY(-2px);
+  /* Slight lift on hover */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  /* Stronger shadow on hover */
+}
+
+.sidebar-option p ,.sidebar-bottom p{
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.logo {
+  color: white;
+  margin-bottom: 4vw;
+}
+
+.sidebar-bottom {
+  margin-left: 0.5vw;
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  color: white;
 }

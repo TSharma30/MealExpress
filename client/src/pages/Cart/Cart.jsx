@@ -4,12 +4,12 @@ import { StoreContext } from '../../context/StoreContext';
 import { assets } from '../../assets/assets'; // Assuming assets is properly imported
 
 const Cart = () => {
-  const { cartItems, food_list, addToCart, removeFromCart, getTotalCartAmount,url } = useContext(StoreContext);
+  const { cartItems, food_list, addToCart, removeFromCart, getTotalCartAmount, url } = useContext(StoreContext);
  
   const cartAmount = getTotalCartAmount();
+  console.log(cartAmount)
   const deliveryFee = cartAmount > 400 ? 0 : 40;
   const totalAmount = cartAmount + deliveryFee;
-
 
   return (
     <div className="cart-container">
@@ -22,10 +22,10 @@ const Cart = () => {
             <p className="cart-item-total">TOTAL</p>
           </div>
 
-          {food_list.map((item, index) => {
+          {food_list.map((item) => {
             if (cartItems[item.id] > 0) {
               return (
-                <div className="cart-items-item" key={index}>
+                <div className="cart-items-item" key={item.id}>
                   <div className="cart-item-image">
                     <img src={url + "/images/" + item.image} alt={item.name} />
                     <p className='name'>{item.name}</p>
@@ -39,7 +39,7 @@ const Cart = () => {
                       src={assets.remove_icon_red}
                       alt="Remove"
                     />
-                    <p>{cartItems[item._id]}</p>
+                    <p>{cartItems[item.id]}</p>
                     <img
                       className='add-button'
                       onClick={() => addToCart(item.id)}

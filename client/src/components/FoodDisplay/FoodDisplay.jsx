@@ -10,8 +10,12 @@ const FoodDisplay = ({ category }) => {
         <div className="food-display" id='food-display'>
             <h2>Explore Local Flavors: Indulge in the Top Dishes Near You!</h2>
             <div className="food-display-list">
-                {food_list.map((item, index) => (
-                    (category === "All" || category === item.category) && (
+                {food_list.map((item, index) => {
+                    // Normalize the case for comparison
+                    const normalizedCategory = category.toLowerCase();
+                    const normalizedItemCategory = item.category.toLowerCase();
+                    
+                    return (normalizedCategory === "all" || normalizedCategory === normalizedItemCategory) && (
                         <FoodItem 
                             key={index} 
                             id={item.id} 
@@ -21,8 +25,8 @@ const FoodDisplay = ({ category }) => {
                             image={item.image} 
                             rating={item.rating}
                         />
-                    )
-                ))}
+                    );
+                })}
             </div>
         </div>
     );

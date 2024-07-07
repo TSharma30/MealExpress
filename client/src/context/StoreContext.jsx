@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import axios from "axios"; // Import axios for HTTP requests
-import { useLoaderData } from "react-router-dom";
+import axios from "axios";
 
 export const StoreContext = createContext(null);
 
@@ -8,59 +7,123 @@ const StoreContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("");
     const [food_list, setFoodList] = useState([]);
-    const url = "http://localhost:8080"; // Base URL for API
+    const [loading, setLoading] = useState(true);
+    const url = "http://localhost:8080";
 
-    // Function to add an item to the cart
-    const addToCart = (itemId) => {
-        if (!cartItems[itemId]) {
-            setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
-        } else {
-            setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    const addToCart = async (itemId) => {
+        setCartItems((prev) => ({
+            ...prev,
+            [itemId]: (prev[itemId] || 0) + 1,
+        }));
+        if (token) {
+            await axios.post(
+                url+ "/api/cart/add",
+                { itemId },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
         }
     };
-
-    // Function to remove an item from the cart
-    const removeFromCart = (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-    };
-
-    // Function to calculate total amount in the cart
-    // Function to calculate total amount in the cart
-const getTotalCartAmount = () => {
-    let totalAmount = 0;
-    for (const item in cartItems) {
-        if (cartItems[item] > 0) {
-            let itemInfo = food_list.find((product) => product.id === item);
-            if (itemInfo) {
-                totalAmount += itemInfo.price * cartItems[item];
-            }
-        }
-    }
-    return totalAmount;
-};
-
-    // Function to fetch food list from the server
     const fetchFoodList = async () => {
         try {
-            const response = await axios.get(`${url}/api/food/list`);
+            const response = await axios.get(url + "/api/food/list");
             setFoodList(response.data.data);
         } catch (error) {
             console.error("Error fetching food list:", error);
+        } finally {
+            setLoading(false);
         }
     };
 
-    // Effect to fetch food list on component mount
+    const removeFromCart = async (itemId) => {
+        setCartItems((prev) => {
+            const newCartItems = { ...prev };
+            if (newCartItems[itemId] > 0) {
+                newCartItems[itemId] -= 1;
+            }
+            return newCartItems;
+        });
+        if (token) {
+            await axios.post(
+                url+ "/api/cart/remove",
+                { itemId },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+        }
+    };
+
+    const getTotalCartAmount = () => {
+        let totalAmount = 0;
+
+        console.log("cartItems:", cartItems);
+        console.log("food_list:", food_list);
+
+        if (loading) {
+            console.warn("Food list is still loading.");
+            return totalAmount;
+        }
+
+        if (food_list.length === 0) {
+            console.warn("food_list is empty or not yet fetched.");
+            return totalAmount;
+        }
+
+        for (const itemId in cartItems) {
+            console.log(`Checking item: ${itemId} (type: ${typeof itemId})`);
+
+            if (cartItems[itemId] > 0) {
+                const itemInfo = food_list.find((product) => {
+                    console.log(`Comparing itemId (${itemId} - type: ${typeof itemId}) with product.id (${product.id} - type: ${typeof product.id})`);
+                    return product.id.toString() === itemId.toString();
+                });
+
+                console.log("Item info:", itemInfo);
+                if (itemInfo) {
+                    totalAmount += itemInfo.price * cartItems[itemId];
+                } else {
+                    console.warn(`Item with ID ${itemId} not found in food_list.`);
+                }
+            }
+        }
+
+        console.log("Final totalAmount:", totalAmount);
+        return totalAmount;
+    };
+
+    const loadCartData=async(token)=>{
+        const response= await axios.post(
+            url+ "/api/cart/get",
+            {},
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+            
+        );
+        setCartItems(response.data.cartData);
+    }
+
     useEffect(() => {
         async function loadData() {
             await fetchFoodList();
+            if (localStorage.getItem("token")) {
+                setToken(localStorage.getItem("token"));
+                await loadCartData(localStorage.getItem("token"))
+            }
         }
-        if (localStorage.getItem("token")) {
-            setToken(localStorage.getItem("token"));
-        }
+        
         loadData();
-    }, []); // Empty dependency array ensures this effect runs only once on mount
 
-    // Context value with all relevant state and functions
+    }, []);
+
     const contextValue = {
         food_list,
         cartItems,
@@ -70,7 +133,7 @@ const getTotalCartAmount = () => {
         token,
         setToken,
         url,
-        setFoodList, // Make sure to include setFoodList in context value
+        setFoodList,
     };
 
     return (

@@ -1,7 +1,15 @@
-import { PrismaClient } from '@prisma/client';
-import fs from "fs"
+import pkg from '@prisma/client';
+const { PrismaClient } = pkg;
 
 const prisma = new PrismaClient();
+
+// Your controller logic using prisma
+
+export { prisma };
+
+import fs from "fs"
+
+
 
 const addFood = async (req, res) => {
     const { name, description, price, category } = req.body;

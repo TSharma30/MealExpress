@@ -1,11 +1,9 @@
 import express from "express";
 import cors from "cors";
-import { PrismaClient } from "@prisma/client";
 import bodyParser from 'body-parser';
 import foodRouter from "./routes/foodRoute.js";
 import userRouter from "./routes/userRoute.js";
 
-const prisma = new PrismaClient();
 const app = express();
 const port = 8080;
 
