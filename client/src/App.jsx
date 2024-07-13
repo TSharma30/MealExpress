@@ -8,6 +8,7 @@ import './App.css'; // Adjusted path if necessary
 import Footer from './components/Footer/Footer';
 import LoginPopup from "./components/LoginPopup/LoginPopup"
 import Cursor from './components/Cursor/Cursor';
+import MyOrders from "./pages/MyOrder/MyOrder.jsx"
 
 function App() {
   const [showLogin,setShowLogin] = useState(false);
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/order" element={<PlaceOrder />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/myorder" element={<MyOrders/>} />
         </Routes>
         <Footer/>
       
