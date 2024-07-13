@@ -1,0 +1,56 @@
+.admin-orders
+{
+    background-color: white;
+    width: 100%;
+    padding: 2vw;
+    margin: 2vw;
+    border-radius: 1vw;
+}
+
+.admin-orders h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .admin-order-item {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #ff9800;
+    transition: transform 0.2s;
+  }
+  
+  .admin-order-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .admin-order-item p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  .admin-order-item p span {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .admin-order-item select {
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .admin-order-item select:focus {
+    border-color: #ff9800;
+  }
+  
+  

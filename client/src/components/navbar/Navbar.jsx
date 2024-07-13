@@ -1,4 +1,4 @@
-import React, { Profiler, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
 import { assets } from '../../assets/assets';
@@ -37,9 +37,17 @@ const Navbar = ({ setShowLogin }) => {
           <div className='navbar-profile'>
             <img src={assets.profile_icon} alt="" />
             <ul className="nav-profile-dropdown">
-              <li><img src={assets.bag_icon} alt="" /><p>Orders</p></li>
+              <li className='myorder'>
+                <Link to="/myorder">
+                  <img src={assets.bag_icon} alt="" />
+                  <p>My Orders</p>
+                </Link>
+              </li>
               <hr />
-              <li onClick={logout}><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
+              <li onClick={logout}>
+                <img src={assets.logout_icon} alt="" />
+                <p>Logout</p>
+              </li>
             </ul>
           </div>
         )}

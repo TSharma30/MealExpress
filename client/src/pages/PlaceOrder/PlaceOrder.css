@@ -2,143 +2,134 @@
     display: flex;
     justify-content: space-between;
     margin: 20px;
-}
-
-.place-order-left {
+  }
+  
+  .place-order-left {
     width: 60%;
-    padding: 5px;
-    margin-left: 2vw;
+    padding: 10px;
     background-color: #fff;
     border-radius: 5px;
-}
-
-.place-order-left .title {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .place-order-left .title {
     font-size: 1.5rem;
     margin-bottom: 20px;
     padding: 10px;
-    background-color: #fff5e6;
-    /* Lightest shade of orange */
+    background-color: #fff5e6; /* Lightest shade of orange */
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-}
-
-.multi-fields {
+  }
+  
+  .multi-fields {
     display: flex;
     flex-wrap: wrap;
-
-
-}
-
-.multi-fields input {
-    flex: 1 1 calc(50% - 10px);
-    /* Adjust width here */
-    padding: 10px;
+  }
+  
+  .multi-fields input {
+    flex: 1 1 calc(50% - 10px); /* Adjust width here */
     margin-right: 10px;
-    background-color: #00000010;
-    height: 2.5vw;
+    margin-bottom: 10px;
+    padding: 7px; /* Increased padding for better input height */
+    background-color: #f3f3f3; /* Adjusted background color */
+    border: 1px solid #ccc;
     border-radius: 5px;
-    border: #ccc solid;
-    border: none;
-
-
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    /* Bottom shadow */
-}
-
-input[type="email"],
-input[type="text"] {
-    width: calc(100% - 10px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Bottom shadow */
+  }
+  
+  .multi-fields input:last-child {
+    margin-right: 0;
+  }
+  
+  .cart-total-section {
+    width: 35%;
     padding: 10px;
-    margin-bottom: 1.5vw;
-    border: none;
-    border: #cccccc4e solid;
+    background-color: #fff;
     border-radius: 5px;
-    background-color: #f3f3f35a;
-    height: 2.5vw;
-
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    /* Bottom shadow */
-}
-
-input[type="text"]:last-child {
-    margin-bottom: 20px;
-}
-
-/* Adjust specific widths for individual fields */
-input[type="text"][placeholder="First name"],
-input[type="text"][placeholder="Last name"],
-input[type="text"][placeholder="City"],
-input[type="text"][placeholder="State"],
-input[type="text"][placeholder="Zip-Code"],
-input[type="text"][placeholder="Country"] {
-    width: calc(50% - 10px);
-    /* Adjust width as needed */
-}
-
-.cart-total {
-    padding: 1vw;
-}
-
-.cart-total h2 {
-    margin-bottom: 1vw;
-}
-
-.cart-total-details {
+  }
+  
+  .cart-total {
+    padding: 10px;
+  }
+  
+  .cart-total h2 {
+    margin-bottom: 10px;
+  }
+  
+  .cart-total-details {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1vw;
-}
-
-.cart-total-details p,
-.cart-total-details b {
+    margin-bottom: 10px;
+  }
+  
+  .cart-total-details p,
+  .cart-total-details b {
     margin: 0;
-}
-
-.cart-total button {
+  }
+  
+  .cart-total button {
     background-color: tomato;
     color: #fff;
     border: none;
-    padding: 1vw 2vw;
+    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-}
-
-.cart-total button:hover {
+  }
+  
+  .cart-total button:hover {
     background-color: #c82333;
-}
-
-.cart-promocode {
-    margin-top: 2vw;
-}
-
-.cart-promocode p {
-    margin-bottom: 1vw;
-}
-
-.cart-promocode-input {
+  }
+  
+  .cart-promocode {
+    margin-top: 20px;
+  }
+  
+  .cart-promocode p {
+    margin-bottom: 10px;
+  }
+  
+  .cart-promocode-input {
     display: flex;
     align-items: center;
-}
-
-.cart-promocode-input input {
+  }
+  
+  .cart-promocode-input input {
     flex: 1;
-    padding: 0.5vw;
-    border: 0px solid #ccc;
-    box-shadow: 0px 3px 5px rgb(254, 182, 109);
+    padding: 5px; /* Increased padding for better input height */
+    border: 1px solid #ccc;
     border-radius: 20px;
-    margin-right: 10px;
-    /* Gap between input field and button */
-}
-
-.cart-promocode-input button {
+    margin-right: 10px; /* Gap between input field and button */
+    box-shadow: 0 3px 5px rgba(254, 182, 109, 0.5);
+  }
+  
+  .cart-promocode-input button {
     background-color: tomato;
     color: #fff;
     border: none;
-    padding: 0.5vw 1vw;
+    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-}
-
-.cart-promocode-input button:hover {
+  }
+  
+  .cart-promocode-input button:hover {
     background-color: #c82333;
-}
+  }
+  
+  /* Adjust specific input styles */
+  .place-order-left input[type="email"],
+  .place-order-left input[name="street"],
+  .place-order-left input[name="phone"] {
+    background-color: #f3f3f3; /* Match background color */
+    border: 1px solid #ccc; /* Match border */
+    padding: 7px; /* Match padding */
+    width:306px;
+    border-radius: 5px; /* Match border radius */
+    margin-bottom: 10px; /* Ensure consistent bottom margin */
+    
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Match box shadow */
+  }
+  .place-order-left input[type="email"]
+  {
+    margin-right: 10px;
+  }

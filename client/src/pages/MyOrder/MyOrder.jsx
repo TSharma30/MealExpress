@@ -1,55 +1,65 @@
-import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
-import { StoreContext } from '../../context/StoreContext'
-import { assets } from '../../assets/assets'
-import "./MyOrder.css"
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './MyOrder.css';
 
-const MyOrder = () => {
-    const [data,setData]=useState([])
-    const {token}=useContext(StoreContext)
+const MyOrders = () => {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    const fetchOrders=async()=>
-        {
-            const response=await axios.post(url+"/api/order/userorders",{headers: {
-                Authorization: `Bearer ${token}`
-            }})
-            setData(response.data.data)
+  const fetchOrders = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get('http://localhost:8080/api/orders/user', {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
-        useEffect(()=>{
-            if(token)
-                {
-                    fetchOrders();
-                }
-        },[token])
+      });
+      if (response.data.success) {
+        setOrders(response.data.orders);
+      } else {
+        console.error('Failed to fetch orders');
+      }
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  // This effect will run when the component mounts or when it regains focus
+  useEffect(() => {
+    const handleFocus = () => {
+      fetchOrders();
+    };
+
+    window.addEventListener('focus', handleFocus);
+    return () => window.removeEventListener('focus', handleFocus);
+  }, []);
+
   return (
     <div className="my-orders">
-        <h2>My Orders</h2>
-        <div className="container">
-            {data.map((order,index)=>{
-                return
-                (
-                   <div key={index} className="my-orders-order">
-                    <img src={assets.parcel_icon} alt="" />
-                    <p>{order.items.map((item,index)=>
-                        {
-                            if(index===order.items.length-1)
-                                {
-                                    return item.name+ " X " +item.quantity+", "
-                                }
-
-                        })}</p>
-                        <p>{order.amount}.00</p>
-                        <p>Items:{order.items.length}</p>
-                        <p><span>&#x25cf;</span><b>{order.status}</b></p>
-                        <button>Track Order</button>
-                   </div> 
-                )
-            })}
-        </div>
+      <h2>My Orders</h2>
+      {loading ? (
+        <div className="loading">Loading orders...</div>
+      ) : orders.length === 0 ? (
+        <div className="no-orders">No orders found.</div>
+      ) : (
+        orders.map((order) => (
+          <div key={order.id} className="order-item">
+            <div className="order-details">
+              <p>Order ID: {order.id}</p>
+              <p>Total Amount: Rs {order.totalAmount}</p>
+              <p>Status: {order.status}</p>
+              <p>Date: {new Date(order.createdAt).toLocaleString()}</p>
+            </div>
+          </div>
+        ))
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default MyOrder
-
-
+export default MyOrders;

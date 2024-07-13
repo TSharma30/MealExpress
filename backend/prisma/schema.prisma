@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -20,34 +14,31 @@ model Admin {
   email    String  @unique
 }
 
-
 model User {
-  id        Int    @id @default(autoincrement())
+  id        Int     @id @default(autoincrement())
   name      String
-  email     String @unique
+  email     String  @unique
   password  String
-  cartData  Json?  // Optional field for storing cart data as JSON
+  cartData  Json?   // Optional field for storing cart data as JSON
+  orders    Order[] // One-to-many relation with Order
 }
-
 
 model Food {
   id          Int     @id @default(autoincrement())
   name        String
   description String
-  price       Int
+  price       Float   // Changed to Float for better handling of currency
   category    String
   image       String
 }
 
 model Order {
-  id        String   @id @default(uuid())
-  userId    Int
-  items     Json
-  amount    Float
-  address   Json
-  status    String   @default("food processing")
-  date      DateTime @default(now())
-
-
-
+  id           Int      @id @default(autoincrement())
+  userId       Int
+  user         User     @relation(fields: [userId], references: [id])
+  items        Json
+  totalAmount  Float
+  deliveryInfo Json
+  status       String   @default("Preparing")
+  createdAt    DateTime @default(now())
 }
